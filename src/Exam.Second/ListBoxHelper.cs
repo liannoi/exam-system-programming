@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -24,6 +25,11 @@ namespace Exam.Second
     {
         public static void ClearListBox(ListBox listBox)
         {
+            if (listBox == null)
+            {
+                throw new ArgumentNullException(nameof(listBox));
+            }
+
             listBox.Items.Clear();
         }
 
@@ -41,7 +47,7 @@ namespace Exam.Second
                     listBox.Items.Add(e);
                     Thread.Sleep(500);
                 });
-            }, cancellationToken);
+            }, cancellationToken).ConfigureAwait(false);
         }
     }
 }

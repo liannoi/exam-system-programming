@@ -18,10 +18,6 @@ namespace Exam.First
 {
     public class HelloThreadConfig : BaseThreadConfig
     {
-        public HelloThreadConfig() : base()
-        {
-        }
-
         protected override void Print()
         {
             while (true)

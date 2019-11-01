@@ -18,10 +18,6 @@ namespace Exam.First
 {
     public class WorldThreadConfig : BaseThreadConfig
     {
-        public WorldThreadConfig() : base()
-        {
-        }
-
         protected override void Print()
         {
             while (true)

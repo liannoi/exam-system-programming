@@ -33,5 +33,4 @@ namespace Exam.First
             Console.WriteLine();
         }
     }
-
 }
