@@ -2,6 +2,8 @@
 
 [//]: # (Badges)
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/05f1b5e0c75e4ddaa1dc8151737465eb)](https://www.codacy.com/manual/liannoi/exam-system-programming?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=liannoi/exam-system-programming&amp;utm_campaign=Badge_Grade)
+[![CodeFactor](https://www.codefactor.io/repository/github/liannoi/exam-system-programming/badge)](https://www.codefactor.io/repository/github/liannoi/exam-system-programming)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/liannoi/exam-system-programming/blob/master/LICENSE)
 
 [//]: # (Short description)
