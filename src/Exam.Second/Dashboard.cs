@@ -8,7 +8,7 @@ namespace Exam.Second
 {
     public partial class Dashboard : Form
     {
-        private TestClassAsync testClass;
+        private readonly TestClassAsync testClass;
         private CancellationTokenSource cancellationTokenSource;
 
         public CancellationToken CancellationToken => cancellationTokenSource?.Token ?? CancellationToken.None;

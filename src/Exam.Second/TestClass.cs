@@ -16,7 +16,7 @@ namespace Exam.Second
         {
             Thread.Sleep(5000);
             List<double> collection = new List<double>();
-            foreach (var item in source)
+            foreach (double item in source)
             {
                 collection.Add(Math.Pow(item, 2));
             }
@@ -28,7 +28,7 @@ namespace Exam.Second
         {
             Thread.Sleep(5000);
             List<double> collection = new List<double>();
-            foreach (var item in source)
+            foreach (double item in source)
             {
                 collection.Add(item * Math.Sin(item));
             }

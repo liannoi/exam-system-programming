@@ -6,7 +6,7 @@ namespace Exam.Second
 {
     public class TestClassAsync
     {
-        private TestClass testClass;
+        private readonly TestClass testClass;
 
         public TestClassAsync()
         {
@@ -28,7 +28,7 @@ namespace Exam.Second
 
         public async Task<IEnumerable<double>> GetFunctionSinAsync(IEnumerable<double> source)
         {
-            return await Task.Factory.StartNew(()=>
+            return await Task.Factory.StartNew(() =>
             {
                 return testClass.GetFunctionSin(source.ToList());
             });

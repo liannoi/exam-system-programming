@@ -2,9 +2,9 @@
 
 namespace Exam.First
 {
-    public static class Program
+    internal static class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             HelloThreadConfig helloThreadConfig = new HelloThreadConfig();
             WorldThreadConfig worldThreadConfig = new WorldThreadConfig();
