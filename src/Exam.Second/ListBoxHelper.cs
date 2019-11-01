@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -32,11 +33,11 @@ namespace Exam.Second
             listBox.Items.Clear();
         }
 
-        public static async Task FillListBoxAsync(ListBox listBox, Task<List<double>> objects, CancellationToken cancellationToken)
+        public static async Task FillListBoxAsync(ListBox listBox, Task<IEnumerable<double>> objects, CancellationToken cancellationToken)
         {
             await Task.Factory.StartNew(() =>
             {
-                objects.Result.ForEach(async e =>
+                objects.Result.ToList().ForEach(e =>
                 {
                     if (cancellationToken.IsCancellationRequested)
                     {
@@ -44,9 +45,9 @@ namespace Exam.Second
                     }
 
                     listBox.Items.Add(e);
-                    await Task.Delay(500);
+                    Thread.Sleep(500);
                 });
-            }, cancellationToken);
+            }, cancellationToken).ConfigureAwait(false);
         }
     }
 }
