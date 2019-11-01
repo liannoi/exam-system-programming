@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -24,14 +24,19 @@ namespace Exam.Second
     {
         public static void ClearListBox(ListBox listBox)
         {
+            if (listBox == null)
+            {
+                throw new ArgumentNullException(nameof(listBox));
+            }
+
             listBox.Items.Clear();
         }
 
-        public static async Task FillListBoxAsync(ListBox listBox, Task<IEnumerable<double>> objects, CancellationToken cancellationToken)
+        public static async Task FillListBoxAsync(ListBox listBox, Task<List<double>> objects, CancellationToken cancellationToken)
         {
             await Task.Factory.StartNew(() =>
             {
-                objects.Result.ToList().ForEach(e =>
+                objects.Result.ForEach(async e =>
                 {
                     if (cancellationToken.IsCancellationRequested)
                     {
@@ -39,7 +44,7 @@ namespace Exam.Second
                     }
 
                     listBox.Items.Add(e);
-                    Thread.Sleep(500);
+                    await Task.Delay(500);
                 });
             }, cancellationToken);
         }

@@ -27,7 +27,6 @@ namespace Exam.Second
 
         public CancellationToken CancellationToken => cancellationTokenSource?.Token ?? CancellationToken.None;
 
-
         public Dashboard()
         {
             InitializeComponent();
@@ -76,21 +75,21 @@ namespace Exam.Second
 
         private void ReCreateToken()
         {
-            GC.SuppressFinalize(cancellationTokenSource);
+            cancellationTokenSource.Dispose();
             cancellationTokenSource = new CancellationTokenSource();
         }
 
-        private async void SequentialFillButton_ClickAsync(object sender, EventArgs e)
+        private async void SequentialFillButton_Click(object sender, EventArgs e)
         {
             ReCreateToken();
-            await FillConsistentlyAsync();
+            await FillConsistentlyAsync().ConfigureAwait(false);
         }
 
         private async Task FillConsistentlyAsync()
         {
             Task firstTask = ListBoxHelper.FillListBoxAsync(datasListBox, testClass.GetDataAsync(), CancellationToken);
-            Task secondTask = await firstTask.ContinueWith(CompleteSecondAsync);
-            Task thirdTask = await secondTask.ContinueWith(CompleteThirdAsync);
+            Task secondTask = await firstTask.ContinueWith(CompleteSecondAsync).ConfigureAwait(false);
+            await secondTask.ContinueWith(CompleteThirdAsync).ConfigureAwait(false);
         }
 
         private async Task CompleteSecondAsync(Task task)

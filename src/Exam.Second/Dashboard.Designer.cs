@@ -98,7 +98,7 @@
             this.sequentialFillButton.TabIndex = 6;
             this.sequentialFillButton.Text = "Sequential";
             this.sequentialFillButton.UseVisualStyleBackColor = true;
-            this.sequentialFillButton.Click += new System.EventHandler(this.SequentialFillButton_ClickAsync);
+            this.sequentialFillButton.Click += new System.EventHandler(this.SequentialFillButton_Click);
             // 
             // clearAllButton
             // 
